@@ -157,12 +157,13 @@ public class AndOrSearch<S, A> {
 		if (subPlans.size() == 1) {
 			// no if is needed in this case...
 			return subPlans.get(0);
-		} else {
-			// return [if s_1 then plan_1 ... else if s_n-1 then plan_n-1 else plan_n]
-			Plan<S, A> plan = new Plan<>();
-			for (int i = 0; i < subPlans.size(); i++)
-				plan.addIfStatement(states.get(i), subPlans.get(i));
-			return plan;
+		}
+		
+		// return [if s_1 then plan_1 ... else if s_n-1 then plan_n-1 else plan_n]
+		Plan<S, A> plan = new Plan<>();
+		for (int i = 0; i < subPlans.size(); i++)
+			plan.addIfStatement(states.get(i), subPlans.get(i));
+		return plan;
 		}
 	}
 
